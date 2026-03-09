@@ -66,6 +66,31 @@ all_resources = {
         "IMDA / PDPC – Model AI Governance Framework": "https://www.pdpc.gov.sg/-/media/Files/PDPC/PDF-Files/Resource-for-Organisation/AI/SGModelAIGovFramework2.pdf",
         "CSA Singapore – Securing AI Systems": "https://www.csa.gov.sg/resources/publications/guidelines-and-companion-guide-on-securing-ai-systems"
     },
+    "United Kingdom": {
+        "UK AI Regulation White Paper": "https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach",
+        "ICO – Guidance on AI and Data Protection": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/",
+        "NCSC – Guidelines for Secure AI System Development": "https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development"
+    },
+    "Australia": {
+        "Australia – AI Ethics Framework": "https://www.industry.gov.au/publications/australias-ai-ethics-framework",
+        "Australia – Voluntary AI Safety Standard": "https://www.industry.gov.uk/publications/voluntary-ai-safety-standard",
+        "ACSC – Security of AI": "https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/artificial-intelligence/security-ai"
+    },
+    "United States": {
+        "NIST AI Risk Management Framework": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+        "Executive Order 14110 (Safe AI)": "https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/",
+        "OMB – AI Gov in Federal Government": "https://www.whitehouse.gov/wp-content/uploads/2024/03/M-24-10-Advancing-Governance-Innovation-and-Risk-Management-for-Agency-Use-of-Artificial-Intelligence.pdf"
+    },
+    "Hong Kong": {
+        "PCPD – Guidance on Ethical Development and Use of AI": "https://www.pcpd.org.hk/english/resources_centre/publications/files/guidance_ethical_e.pdf",
+        "OGCIO – Ethical AI Framework": "https://www.ogcio.gov.hk/en/our_work/infrastructure/e-government/ethical_ai_framework/",
+        "HKMA – AI in Financial Services": "https://www.hkma.gov.hk/media/eng/doc/key-functions/banking-stability/banking-policy/20191101e1.pdf"
+    },
+    "India": {
+        "NITI Aayog – Strategy for Responsible AI": "https://niti.gov.in/sites/default/files/2021-02/Responsible-AI-22022021.pdf",
+        "IndiaAI – Governance & Policy": "https://indiaai.gov.in/governance",
+        "MeitY – AI Mission Guidelines": "https://www.meity.gov.in/content/artificial-intelligence"
+    },
     "Global Best Practice (NIST/ISO)": {
         "NIST AI Risk Management Framework (AI RMF 1.0)": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
         "ISO/IEC 42001:2023 - AI Management System": "https://www.iso.org/standard/81230.html",
@@ -186,82 +211,233 @@ all_controls = {
             }
         ]
     },
-    "Global Best Practice (NIST/ISO)": {
-        "1. Governance (ISO 42001 A.2/A.3)": [
+    "United Kingdom": {
+        "Governance & Accountability": [
             {
-                "id": "GP-C1",
-                "name": "Leadership & AI Policy",
-                "requirement": "Establish management commitment and organizational policies for AI.",
-                "why": "Foundational for any management system (ISO 42001).",
-                "implementation": "Corporate AI Ethics Board, AI Policy Document",
-                "recommendation": "Formalize AI governance at the board level.",
-                "cost_usd": (7000, 18000)
-            }
-        ],
-        "2. Risk Mapping (NIST Map)": [
-            {
-                "id": "GP-C2",
-                "name": "Contextual Risk Assessment",
-                "requirement": "Identify AI risks in the specific business context and impact on stakeholders.",
-                "why": "NIST AI RMF prioritizes understanding context first.",
-                "implementation": "AI Impact Assessment (AIIA) process",
-                "recommendation": "Conduct a mandatory 'Map' exercise for every new AI project.",
-                "cost_usd": (5000, 12000)
-            }
-        ],
-        "3. Data Governance (ISO 42001 A.7)": [
-            {
-                "id": "GP-C3",
-                "name": "Data Quality & Provenance",
-                "requirement": "Ensure data used for training is high quality, representative, and traceable.",
-                "why": "Essential to mitigate bias and ensure model integrity.",
-                "implementation": "Automated Data Lineage tracking, Bias Scanners",
-                "recommendation": "Implement automated data quality checks in the feature engineering pipeline.",
-                "cost_usd": (12000, 35000)
-            }
-        ],
-        "4. Lifecycle Security (ISO 42001 A.6)": [
-            {
-                "id": "GP-C4",
-                "name": "Secure AI Development",
-                "requirement": "Apply security controls throughout the AI lifecycle (design, build, deploy).",
-                "why": "Unified approach to AI system security.",
-                "implementation": "DevSecOps for ML (MLSecOps), SBOM for models",
-                "recommendation": "Incorporate automated model-scanning into CI/CD pipelines.",
-                "cost_usd": (15000, 40000)
-            }
-        ],
-        "5. Measurement (NIST Measure)": [
-            {
-                "id": "GP-C5",
-                "name": "Trustworthiness Metrics",
-                "requirement": "Identify and track metrics for accuracy, bias, safety, and robustness.",
-                "why": "Quantifying risk is key to managing it (NIST).",
-                "implementation": "Model Monitoring Dashboards, Stress Testing",
-                "recommendation": "Standardize 'Trustworthiness KPIs' for all production models.",
+                "id": "UK-C1",
+                "name": "Accountability & Governance",
+                "requirement": "Clear lines of accountability and defined roles throughout the AI lifecycle.",
+                "why": "White Paper requirement for robust governance.",
+                "implementation": "AI Ethics Committee, Senior Management Accountability",
+                "recommendation": "Appoint a Senior Responsible Officer for AI systems.",
                 "cost_usd": (10000, 25000)
             }
         ],
-        "6. Human Oversight (ISO 42001 A.9)": [
+        "Safety & Security": [
             {
-                "id": "GP-C6",
-                "name": "Human-in-the-Loop Controls",
-                "requirement": "Ensure appropriate level of human oversight for high-stakes outcomes.",
-                "why": "Critical requirement to prevent autonomous failure.",
-                "implementation": "Decision override workflows, Human Review Queues",
-                "recommendation": "Designate 'Human Override' protocols for critical AI-driven decisions.",
+                "id": "UK-C2",
+                "name": "Safety, Security & Robustness",
+                "requirement": "Ensure AI operates reliably and is protected against cyber threats.",
+                "why": "Core UK principle for pro-innovation regulation.",
+                "implementation": "Red-teaming, Secure AI Development Lifecycle (SALC)",
+                "recommendation": "Apply NCSC guidelines for secure AI development.",
+                "cost_usd": (15000, 45000)
+            }
+        ],
+        "Transparency": [
+            {
+                "id": "UK-C3",
+                "name": "Appropriate Transparency",
+                "requirement": "Communicate clearly when AI is being used and how decisions are made.",
+                "why": "Ensures stakeholders understand AI outcomes.",
+                "implementation": "Transparency reports, Explainability (XAI) modules",
+                "recommendation": "Implement context-specific explainability for all public-facing AI.",
                 "cost_usd": (8000, 20000)
             }
         ],
-        "7. Monitoring & Management (NIST Manage)": [
+        "Fairness & Redress": [
             {
-                "id": "GP-C7",
-                "name": "Continuous Monitoring & Incident Response",
-                "requirement": "Perform ongoing monitoring and have a plan for AI-related incidents.",
-                "why": "Ensures models stay safe and accurate over time.",
-                "implementation": "Model Drift Alerts, AI Incident Runbooks",
-                "recommendation": "Integrate AI model failures into existing SOC/NOC monitoring.",
+                "id": "UK-C4",
+                "name": "Fairness & Contestability",
+                "requirement": "Avoid unlawful discrimination and provide mechanisms for redress.",
+                "why": "Protects individuals from biased AI outcomes.",
+                "implementation": "Bias audits, Grievance redressal process",
+                "recommendation": "Establish a formal process for individuals to challenge AI decisions.",
+                "cost_usd": (12000, 30000)
+            }
+        ]
+    },
+    "Australia": {
+        "Governance & Values": [
+            {
+                "id": "AU-C1",
+                "name": "Human-Centred Values",
+                "requirement": "Align AI with human rights, diversity, and individual autonomy.",
+                "why": "Core requirement of Australia AI Ethics Framework.",
+                "implementation": "Human Rights Impact Assessment",
+                "recommendation": "Integrate ethical reviews into the procurement process.",
+                "cost_usd": (6000, 15000)
+            }
+        ],
+        "Privacy & Security": [
+            {
+                "id": "AU-C2",
+                "name": "Privacy Protection & Security",
+                "requirement": "Ensure data protection and security throughout the lifecycle.",
+                "why": "Critical for public trust in AI.",
+                "implementation": "Enhanced encryption, JIT access for ML data",
+                "recommendation": "Implement ACSC's Essential Eight for all AI infrastructure.",
                 "cost_usd": (10000, 30000)
+            }
+        ],
+        "Reliability & Safety": [
+            {
+                "id": "AU-C3",
+                "name": "Reliability & Safety",
+                "requirement": "AI should operate as intended and minimize safety risks.",
+                "why": "Protects society and environment from malfunctions.",
+                "implementation": "Continuous performance testing, Guardrails",
+                "recommendation": "Adopt the Voluntary AI Safety Standard for high-risk models.",
+                "cost_usd": (15000, 40000)
+            }
+        ],
+        "Accountability": [
+            {
+                "id": "AU-C4",
+                "name": "Accountability & Contestability",
+                "requirement": "Identifiable responsibility and ability to challenge AI outcomes.",
+                "why": "Ensures recourse for AI-impacted individuals.",
+                "implementation": "Audit logging, Appeal mechanisms",
+                "recommendation": "Deploy a 'Whistleblower' portal for reporting AI biases.",
+                "cost_usd": (8000, 22000)
+            }
+        ]
+    },
+    "United States": {
+        "Safety & Security (NIST)": [
+            {
+                "id": "US-C1",
+                "name": "Safety & Security Evaluation",
+                "requirement": "Robust evaluations including red-teaming for dual-use foundation models.",
+                "why": "Executive Order 14110 requirement.",
+                "implementation": "Automated Red-teaming, Safety testing reports",
+                "recommendation": "Follow NIST AI 100-1 for risk mapping and measurement.",
+                "cost_usd": (20000, 60000)
+            }
+        ],
+        "Civil Rights & Fairness": [
+            {
+                "id": "US-C2",
+                "name": "Algorithmic Discrimination Mitigation",
+                "requirement": "Prevent and address bias in housing, hiring, and financial services.",
+                "why": "High priority of the US federal government.",
+                "implementation": "Fairness audits, Demographic parity dashboards",
+                "recommendation": "Conduct civil rights impact assessments for all high-impact AI.",
+                "cost_usd": (15000, 40000)
+            }
+        ],
+        "Privacy & Data": [
+            {
+                "id": "US-C3",
+                "name": "Data Privacy Protection",
+                "requirement": "Uphold privacy rights and protect personally identifiable information (PII).",
+                "why": "Protects against data misuse in AI training.",
+                "implementation": "Differential Privacy, PII Scrubbing",
+                "recommendation": "Implement NIST Privacy Framework alongside AI RMF.",
+                "cost_usd": (12000, 35000)
+            }
+        ],
+        "Accountability": [
+            {
+                "id": "US-C4",
+                "name": "Chief AI Officer Oversight",
+                "requirement": "Appoint leadership to oversee AI implementation and risk management.",
+                "why": "Mandated for federal agencies; best practice for enterprise.",
+                "implementation": "CAIO appointment, AI Governance Board",
+                "recommendation": "Formalize the role of Chief AI Officer with board reporting.",
+                "cost_usd": (10000, 30000)
+            }
+        ]
+    },
+    "Hong Kong": {
+        "Accountability & Strategy": [
+            {
+                "id": "HK-C1",
+                "name": "AI Strategy & Accountability",
+                "requirement": "Establish clear strategy and senior management accountability.",
+                "why": "PCPD Guidance on Ethical AI.",
+                "implementation": "Strategic AI Governance Plan",
+                "recommendation": "Define AI as a core pillar of the corporate governance framework.",
+                "cost_usd": (8000, 20000)
+            }
+        ],
+        "Ethical Principles": [
+            {
+                "id": "HK-C2",
+                "name": "Data Stewardship Values",
+                "requirement": "Adhere to values of being Respectful, Beneficial, and Fair.",
+                "why": "PCPD fundamental values.",
+                "implementation": "Ethics Review Board, CSR-AI alignment",
+                "recommendation": "Conduct Ethical Impact Assessments (EIA) regularly.",
+                "cost_usd": (5000, 15000)
+            }
+        ],
+        "Privacy & Data": [
+            {
+                "id": "HK-C3",
+                "name": "PDPO Compliance",
+                "requirement": "Ensure compliance with Personal Data (Privacy) Ordinance in AI use.",
+                "why": "Legal requirement in Hong Kong for data privacy.",
+                "implementation": "Privacy Impact Assessments (PIA), Data minimize",
+                "recommendation": "Map all cross-border data flows related to AI training.",
+                "cost_usd": (10000, 30000)
+            }
+        ],
+        "Human Oversight": [
+            {
+                "id": "HK-C4",
+                "name": "Human Oversight & Transparency",
+                "requirement": "Enable human-in-the-loop and provide explainable AI outcomes.",
+                "why": "Prevents automated decisions with harmful impacts.",
+                "implementation": "Human Review Interfaces, Traceable Decision Logs",
+                "recommendation": "Implement clear levels of human intervention based on risk.",
+                "cost_usd": (10000, 25000)
+            }
+        ]
+    },
+    "India": {
+        "Inclusive Growth": [
+            {
+                "id": "IN-C1",
+                "name": "Inclusivity & Non-discrimination",
+                "requirement": "Ensure AI is accessible and does not discriminate against diverse fabric of India.",
+                "why": "NITI Aayog 'AI for All' strategy.",
+                "implementation": "Multi-language AI interfaces, Bias testing for local demographics",
+                "recommendation": "Perform inclusivity audits to ensure representation in training data.",
+                "cost_usd": (5000, 15000)
+            }
+        ],
+        "Safety & Fairness": [
+            {
+                "id": "IN-C2",
+                "name": "Safety, Reliability & Equality",
+                "requirement": "Ensure systems are safe and promote fairness and equal opportunity.",
+                "why": "Foundational principles for Responsible AI.",
+                "implementation": "Robustness testing, Fairness dashboards",
+                "recommendation": "Implement NITI Aayog's Responsible AI guidelines for specific sectors.",
+                "cost_usd": (10000, 25000)
+            }
+        ],
+        "Privacy & Transparency": [
+            {
+                "id": "IN-C3",
+                "name": "Privacy, Security & Transparency",
+                "requirement": "Uphold privacy rights and ensure transparency in AI decision mechanisms.",
+                "why": "Foundational requirement for user trust.",
+                "implementation": "DPDP Act compliance (upcoming), Explainability modules",
+                "recommendation": "Prepare for Digital Personal Data Protection (DPDP) Act alignment.",
+                "cost_usd": (12000, 35000)
+            }
+        ],
+        "Operationalization": [
+            {
+                "id": "IN-C4",
+                "name": "Accountability & Ethics by Design",
+                "requirement": "Incentivize ethics by design and establish clear accountability.",
+                "why": "Operationalizing Responsible AI (Part 2).",
+                "implementation": "AI Ethics Checklists for Developers, Audit Trails",
+                "recommendation": "Implement 'Ethics by Design' workflows in ML pipelines.",
+                "cost_usd": (8000, 20000)
             }
         ]
     }
@@ -273,12 +449,20 @@ with st.sidebar:
     st.markdown("### **Dashboard Settings**")
     
     # Country Selection
-    country_list = ["Singapore", "United States", "United Kingdom", "European Union", "Australia", "Other (Global Fallback)"]
+    country_list = [
+        "Singapore", 
+        "United Kingdom", 
+        "Australia", 
+        "United States", 
+        "Hong Kong", 
+        "India", 
+        "Other (Global Fallback)"
+    ]
     selected_country = st.selectbox("Select Country/Region:", country_list)
     
     # Determine Framework
-    if selected_country == "Singapore":
-        active_framework = "Singapore"
+    if selected_country in all_controls:
+        active_framework = selected_country
     else:
         active_framework = "Global Best Practice (NIST/ISO)"
         st.warning(f"Using Global Best Practice fallback for {selected_country}.")
