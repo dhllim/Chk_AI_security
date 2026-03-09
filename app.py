@@ -440,6 +440,85 @@ all_controls = {
                 "cost_usd": (8000, 20000)
             }
         ]
+    },
+    "Global Best Practice (NIST/ISO)": {
+        "1. Governance (ISO 42001 A.2/A.3)": [
+            {
+                "id": "GP-C1",
+                "name": "Leadership & AI Policy",
+                "requirement": "Establish management commitment and organizational policies for AI.",
+                "why": "Foundational for any management system (ISO 42001).",
+                "implementation": "Corporate AI Ethics Board, AI Policy Document",
+                "recommendation": "Formalize AI governance at the board level.",
+                "cost_usd": (7000, 18000)
+            }
+        ],
+        "2. Risk Mapping (NIST Map)": [
+            {
+                "id": "GP-C2",
+                "name": "Contextual Risk Assessment",
+                "requirement": "Identify AI risks in the specific business context and impact on stakeholders.",
+                "why": "NIST AI RMF prioritizes understanding context first.",
+                "implementation": "AI Impact Assessment (AIIA) process",
+                "recommendation": "Conduct a mandatory 'Map' exercise for every new AI project.",
+                "cost_usd": (5000, 12000)
+            }
+        ],
+        "3. Data Governance (ISO 42001 A.7)": [
+            {
+                "id": "GP-C3",
+                "name": "Data Quality & Provenance",
+                "requirement": "Ensure data used for training is high quality, representative, and traceable.",
+                "why": "Essential to mitigate bias and ensure model integrity.",
+                "implementation": "Automated Data Lineage tracking, Bias Scanners",
+                "recommendation": "Implement automated data quality checks in the feature engineering pipeline.",
+                "cost_usd": (12000, 35000)
+            }
+        ],
+        "4. Lifecycle Security (ISO 42001 A.6)": [
+            {
+                "id": "GP-C4",
+                "name": "Secure AI Development",
+                "requirement": "Apply security controls throughout the AI lifecycle (design, build, deploy).",
+                "why": "Unified approach to AI system security.",
+                "implementation": "DevSecOps for ML (MLSecOps), SBOM for models",
+                "recommendation": "Incorporate automated model-scanning into CI/CD pipelines.",
+                "cost_usd": (15000, 40000)
+            }
+        ],
+        "5. Measurement (NIST Measure)": [
+            {
+                "id": "GP-C5",
+                "name": "Trustworthiness Metrics",
+                "requirement": "Identify and track metrics for accuracy, bias, safety, and robustness.",
+                "why": "Quantifying risk is key to managing it (NIST).",
+                "implementation": "Model Monitoring Dashboards, Stress Testing",
+                "recommendation": "Standardize 'Trustworthiness KPIs' for all production models.",
+                "cost_usd": (10000, 25000)
+            }
+        ],
+        "6. Human Oversight (ISO 42001 A.9)": [
+            {
+                "id": "GP-C6",
+                "name": "Human-in-the-Loop Controls",
+                "requirement": "Ensure appropriate level of human oversight for high-stakes outcomes.",
+                "why": "Critical requirement to prevent autonomous failure.",
+                "implementation": "Decision override workflows, Human Review Queues",
+                "recommendation": "Designate 'Human Override' protocols for critical AI-driven decisions.",
+                "cost_usd": (8000, 20000)
+            }
+        ],
+        "7. Monitoring & Management (NIST Manage)": [
+            {
+                "id": "GP-C7",
+                "name": "Continuous Monitoring & Incident Response",
+                "requirement": "Perform ongoing monitoring and have a plan for AI-related incidents.",
+                "why": "Ensures models stay safe and accurate over time.",
+                "implementation": "Model Drift Alerts, AI Incident Runbooks",
+                "recommendation": "Integrate AI model failures into existing SOC/NOC monitoring.",
+                "cost_usd": (10000, 30000)
+            }
+        ]
     }
 }
 
@@ -485,7 +564,7 @@ controls_data = all_controls[active_framework]
 
 # --- MAIN PAGE ---
 st.markdown('<p class="big-font">🛡️ AI Governance & Security Dashboard</p>', unsafe_allow_html=True)
-st.markdown("**Empowering organizations with Singapore-aligned AI Risk Management and Security Controls.**")
+st.markdown(f"**Empowering organizations with {active_framework}-aligned AI Risk Management and Security Controls.**")
 st.divider()
 
 # --- NAVIGATION ---
@@ -494,7 +573,8 @@ tab1, tab2, tab3 = st.tabs(["🏛️ AI Governance Assessment", "📋 Control Li
 # --- TAB 1: ASSESSMENT ---
 with tab1:
     st.header("Step 1: Self-Assessment Questionnaire")
-    st.info("Assess your posture across the 15 de-facto controls used in Singapore.")
+    num_controls = sum(len(items) for items in controls_data.values())
+    st.info(f"Assess your posture across the {num_controls} key controls defined in the {active_framework} framework.")
     
     user_answers = {}
     
