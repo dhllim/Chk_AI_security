@@ -1,0 +1,17 @@
+
+Provide the dashboard for AI Governance Control.
+list the control required based on the best practice AI governance risk management include the MAS or Singapore cyber security ai governance framework. provide the URL source and able to download
+
+Then base on the control listed, provide the Questionnaire for company to do assessment.
+
+The dashboard have the feature to allow users to select Questionaire answers.
+
+Next Provide the ranking results and give recommendation for company to implement in order to mitigate the AI risk
+Then the application will propose the implementation of security. Include the estimate pricing.
+The solution must be commercially applicable 
+
+
+The dashboard must be user friendly and easy to use and to be implemented in https://streamlit.io
+Provide the script to run the application.
+ This local repo will later to also setup in the remote cloud https://github.com/dhllim
+
