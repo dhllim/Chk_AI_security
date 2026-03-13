@@ -64,7 +64,7 @@ all_resources = {
         "MAS – FEAT Principles": "https://www.mas.gov.sg/-/media/MAS/News-and-Publications/Monographs-and-Information-Papers/FEAT-Principles-Updated-7-Feb-19.pdf",
         "MAS – AI Risk Management Guidelines (2025)": "https://www.mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management",
         "IMDA / PDPC – Model AI Governance Framework": "https://www.pdpc.gov.sg/-/media/Files/PDPC/PDF-Files/Resource-for-Organisation/AI/SGModelAIGovFramework2.pdf",
-        "CSA Singapore – Securing AI Systems": "https://www.csa.gov.sg/resources/publications/guidelines-and-companion-guide-on-securing-ai-systems"
+        "CSA Singapore – AI Security Guidelines": "https://www.csa.gov.sg/resources/publications/guidelines-and-companion-guide-on-securing-ai-systems"
     },
     "United Kingdom": {
         "UK AI Regulation White Paper": "https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach",
@@ -95,6 +95,12 @@ all_resources = {
         "NIST AI Risk Management Framework (AI RMF 1.0)": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
         "ISO/IEC 42001:2023 - AI Management System": "https://www.iso.org/standard/81230.html",
         "OECD AI Principles": "https://oecd.ai/en/ai-principles"
+    },
+    "AI Security Hub": {
+        "OWASP Top 10 for LLM Applications 2025": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+        "MITRE ATLAS (Adversarial Threat Landscape)": "https://atlas.mitre.org/",
+        "NIST Trustworthy & Responsible AI": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "Cloud Security Alliance (CSA)": "https://cloudsecurityalliance.org"
     }
 }
 
@@ -186,6 +192,15 @@ all_controls = {
                 "implementation": "API Gateway, IAM Integration",
                 "recommendation": "Enforce Zero-Trust access and JIT permissions for ML pipelines.",
                 "cost_usd": (8000, 25000)
+            },
+            {
+                "id": "SG-C13",
+                "name": "CSA Singapore: Novel AI Attack Defense",
+                "requirement": "Address adversarial ML, data poisoning, and model evasion per Oct 2024 Guidelines.",
+                "why": "Protects against emerging zero-day exploits specific to the AI threat landscape.",
+                "implementation": "Secure-by-Design lifecycle, Adversarial Robustness Testing.",
+                "recommendation": "Adopt CSA Singapore's 'Companion Guide on Securing AI Systems' as the primary technical baseline.",
+                "cost_usd": (20000, 55000)
             }
         ],
         "D. Transparency & Explainability": [
@@ -208,6 +223,35 @@ all_controls = {
                 "implementation": "Performance Alerts (e.g., accuracy < 85%)",
                 "recommendation": "Deploy real-time drifting and bias monitoring agents.",
                 "cost_usd": (10000, 35000)
+            }
+        ],
+        "F. Emerging & Zero-Day Threats": [
+            {
+                "id": "SG-ZD1",
+                "name": "RAG-Specific Exploits (ShadowLeak)",
+                "requirement": "Defend against 'zero-click' indirect prompt injection targeting RAG systems.",
+                "why": "ShadowLeak allows attackers to steal account data via manipulated emails/docs.",
+                "implementation": "Isolated Contextual Sandboxing, Human-in-the-loop for RAG API calls.",
+                "recommendation": "Implement strict input validation on retrieved documents and 'ShadowLeak' detection patterns.",
+                "cost_usd": (20000, 50000)
+            },
+            {
+                "id": "SG-ZD2",
+                "name": "Multi-Modal Injection (Gemini Trifecta)",
+                "requirement": "Protect against search, log, and indirect injections in multi-modal LLMs.",
+                "why": "Vulnerabilities like Gemini Trifecta can expose cloud assets via complex inputs.",
+                "implementation": "Output Encoding, Multi-modal Sanitization Pipelines.",
+                "recommendation": "Adopt OWASP LLM01:2025 mitigations for indirect prompt injection.",
+                "cost_usd": (15000, 40000)
+            },
+            {
+                "id": "SG-ZD3",
+                "name": "Prompt Inversion (Inference Leakage)",
+                "requirement": "Mitigate recovery of original prompts from collaborative inference activations.",
+                "why": "Attacker can recover sensitive system prompts by observing model activations.",
+                "implementation": "Differentially Private Inference, Activation Perturbation.",
+                "recommendation": "Apply noise-injection techniques to shared model activations in collaborative settings.",
+                "cost_usd": (25000, 70000)
             }
         ]
     },
@@ -518,6 +562,26 @@ all_controls = {
                 "recommendation": "Integrate AI model failures into existing SOC/NOC monitoring.",
                 "cost_usd": (10000, 30000)
             }
+        ],
+        "8. Emerging & Zero-Day Threats": [
+            {
+                "id": "GP-ZD1",
+                "name": "Zero-Click RAG Exploits (ShadowLeak)",
+                "requirement": "Defend against indirect prompt injection in RAG using context isolation.",
+                "why": "Protects against account takeovers via malicious documents/emails.",
+                "implementation": "Isolated Data Retrieval, LLM-based Guardrails.",
+                "recommendation": "Use restricted API keys for RAG agents and enforce human approval for sensitive actions.",
+                "cost_usd": (20000, 50000)
+            },
+            {
+                "id": "GP-ZD2",
+                "name": "Multi-Modal & Search Injection",
+                "requirement": "Mitigate vulnerabilities targeting multi-modal inputs and live search logs.",
+                "why": "Vulnerabilities like Gemini Trifecta exploit the interaction of search and LLMs.",
+                "implementation": "Input Sanitization for all modalities, Content Security Policy (CSP) for LLM outputs.",
+                "recommendation": "Adopt OWASP LLM 2025 security standards for all multi-modal interfaces.",
+                "cost_usd": (15000, 40000)
+            }
         ]
     }
 }
@@ -554,6 +618,10 @@ with st.sidebar:
     st.markdown(f"### **{active_framework} Resources**")
     for name, url in all_resources[active_framework].items():
         st.markdown(f"📥 [{name}]({url})")
+    
+    st.markdown("### **🛡️ Zero-Day Fix Guides**")
+    for name, url in all_resources["AI Security Hub"].items():
+        st.markdown(f"🔥 [{name}]({url})")
     
     st.divider()
     st.caption(f"Live SGD Rate: **{sgd_rate:.3f}** (USD to SGD)")
